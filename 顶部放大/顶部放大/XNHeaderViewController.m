@@ -9,6 +9,7 @@
 #import "XNHeaderViewController.h"
 
 static NSString *cellID = @"cellID";
+#define kHearderViewHeight 200
 
 @interface XNHeaderViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -20,8 +21,29 @@ static NSString *cellID = @"cellID";
     [super viewDidLoad];
    
     [self prepareTableView];
+    [self prepareHearderView];
     
     self.view.backgroundColor = [UIColor orangeColor];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    
+    //取消自动调整滚动视图间距
+    //ViewController + NAV 会自动调整tableView的contentInset
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    
+    [self.navigationController setNavigationBarHidden:YES]; //隐藏导航栏
+
+}
+
+//顶部视图
+- (void)prepareHearderView {
+    
+    UIView *hearderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, kHearderViewHeight)];
+    
+    hearderView.backgroundColor = [UIColor redColor];
+    
+    [self.view addSubview:hearderView];
 }
 
 - (void)prepareTableView {
@@ -33,6 +55,9 @@ static NSString *cellID = @"cellID";
     [tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:cellID];
     
     [self.view addSubview:tableView];
+    
+    //设置表格的间距
+    tableView.contentInset = UIEdgeInsetsMake(kHearderViewHeight, 0, 0, 0);
     
 }
 

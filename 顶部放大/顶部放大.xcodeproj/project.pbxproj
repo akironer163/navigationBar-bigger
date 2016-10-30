@@ -322,6 +322,7 @@
 				CE6690AC1DC6262800E0499D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
