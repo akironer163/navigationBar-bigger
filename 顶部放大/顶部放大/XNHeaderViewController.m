@@ -59,6 +59,9 @@ static NSString *cellID = @"cellID";
     //设置表格的间距
     tableView.contentInset = UIEdgeInsetsMake(kHearderViewHeight, 0, 0, 0);
     
+    //设置滚动指示器的间距
+    tableView.scrollIndicatorInsets = tableView.contentInset;
+    
 }
 
 #pragma mark: - UITableViewDataSource
