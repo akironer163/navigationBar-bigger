@@ -8,7 +8,9 @@
 
 #import "XNHeaderViewController.h"
 #import "HMObjcSugar.h"
+#import "YYWebImage.h"
 @import AFNetworking;
+
 
 static NSString *cellID = @"cellID";
 #define kHearderViewHeight 200
@@ -37,6 +39,11 @@ static NSString *cellID = @"cellID";
     [self.navigationController setNavigationBarHidden:YES animated:YES]; 
 }
 
+//设置状态栏
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
+}
+
 //顶部视图
 - (void)prepareHearderView {
     
@@ -51,6 +58,13 @@ static NSString *cellID = @"cellID";
     hearderImageView.backgroundColor = [UIColor blueColor];
     
     [hearderView addSubview:hearderImageView];
+    
+    NSURL *url = [NSURL URLWithString:@"http://www.who.int/entity/campaigns/immunization-week/2015/large-web-banner.jpg?ua=1"];
+    //AFN设置图片
+//    [hearderImageView setImageWithURL:url];
+    //YYWebImage 设置图片 网络指示器
+    [hearderImageView yy_setImageWithURL:url options:YYWebImageOptionShowNetworkActivity];
+    
 }
 
 - (void)prepareTableView {
