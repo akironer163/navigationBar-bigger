@@ -13,22 +13,22 @@
 
 
 static NSString *cellID = @"cellID";
-#define kHearderViewHeight 200
+#define kHeaderHeight 200
 
 @interface XNHeaderViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @end
 
 @implementation XNHeaderViewController {
-    UIView *_hearderView;
-    UIImageView *_hearderImageView;
+    UIView *_headerView;
+    UIImageView *_headerImageView;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
    
     [self prepareTableView];
-    [self prepareHearderView];
+    [self prepareheaderView];
     
     self.view.backgroundColor = [UIColor orangeColor];
 }
@@ -48,30 +48,31 @@ static NSString *cellID = @"cellID";
 }
 
 //顶部视图
-- (void)prepareHearderView {
+- (void)prepareheaderView {
     
-    _hearderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, kHearderViewHeight)];
+    _headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, kHeaderHeight)];
     
-    _hearderView.backgroundColor = [UIColor redColor];
+    _headerView.backgroundColor = [UIColor redColor];
     
-    [self.view addSubview:_hearderView];
+    [self.view addSubview:_headerView];
     
-    _hearderImageView = [[UIImageView alloc] initWithFrame:_hearderView.bounds];
+    _headerImageView = [[UIImageView alloc] initWithFrame:_headerView.bounds];
     
-    _hearderImageView.backgroundColor = [UIColor blueColor];
+    _headerImageView.backgroundColor = [UIColor blueColor];
     
-    [_hearderView addSubview:_hearderImageView];
+    [_headerView addSubview:_headerImageView];
     
     NSURL *url = [NSURL URLWithString:@"http://www.who.int/entity/campaigns/immunization-week/2015/large-web-banner.jpg?ua=1"];
+    
     //AFN设置图片
-//    [hearderImageView setImageWithURL:url];
+//    [headerImageView setImageWithURL:url];
     //YYWebImage 设置图片 网络指示器
-    [_hearderImageView yy_setImageWithURL:url options:YYWebImageOptionShowNetworkActivity];
+    [_headerImageView yy_setImageWithURL:url options:YYWebImageOptionShowNetworkActivity];
     
     //填充模式 解决图片变形问题
-    _hearderImageView.contentMode = UIViewContentModeScaleAspectFill;
+    _headerImageView.contentMode = UIViewContentModeScaleAspectFill;
     //设置图像裁切
-    _hearderImageView.clipsToBounds = YES;
+    _headerImageView.clipsToBounds = YES;
     
 }
 
@@ -85,27 +86,34 @@ static NSString *cellID = @"cellID";
     
     [self.view addSubview:tableView];
     
-    //设置表格的间距
-    tableView.contentInset = UIEdgeInsetsMake(kHearderViewHeight, 0, 0, 0);
-    
-    //设置滚动指示器的间距
+    //设置表格 滚动指示器 的间距
+    tableView.contentInset = UIEdgeInsetsMake(kHeaderHeight, 0, 0, 0);
     tableView.scrollIndicatorInsets = tableView.contentInset;
     
 }
+
 #pragma mark: - UITableViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     CGFloat offset = scrollView.contentOffset.y + scrollView.contentInset.top;
     
     if (offset < 0) {
+        
         //放大
-        _hearderView.hm_y = 0;
-        _hearderView.hm_height = kHearderViewHeight - offset;
-        _hearderImageView.hm_height =  _hearderView.hm_height;
+        _headerView.hm_y = 0;
+        _headerView.hm_height = kHeaderHeight - offset;
+        _headerImageView.hm_height =  _headerView.hm_height;
     } else {
+        
         //整体上移
-        _hearderView.hm_y = -offset;
-        _hearderView.hm_height = kHearderViewHeight;
-        _hearderImageView.hm_height =  _hearderView.hm_height;
+        _headerView.hm_height = kHeaderHeight;
+        _headerImageView.hm_height =  _headerView.hm_height;
+        
+        CGFloat min = kHeaderHeight - 64; //headerVeiw最小y值
+        _headerView.hm_y = -MIN(min, offset);
+        
+//        NSLog(@"%f", offset / min); //offset / min == 1 隐藏_headerViewImage 
+        CGFloat progress = 1 - (offset / min);
+        _headerImageView.alpha = progress;
     }
 }
 
