@@ -103,6 +103,9 @@ static NSString *cellID = @"cellID";
         _hearderImageView.hm_height =  _hearderView.hm_height;
     } else {
         //整体上移
+        _hearderView.hm_y = -offset;
+        _hearderView.hm_height = kHearderViewHeight;
+        _hearderImageView.hm_height =  _hearderView.hm_height;
     }
 }
 
