@@ -19,7 +19,10 @@ static NSString *cellID = @"cellID";
 
 @end
 
-@implementation XNHeaderViewController
+@implementation XNHeaderViewController {
+    UIView *_hearderView;
+    UIImageView *_hearderImageView;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -47,23 +50,24 @@ static NSString *cellID = @"cellID";
 //顶部视图
 - (void)prepareHearderView {
     
-    UIView *hearderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, kHearderViewHeight)];
+    _hearderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, kHearderViewHeight)];
     
-    hearderView.backgroundColor = [UIColor redColor];
+    _hearderView.backgroundColor = [UIColor redColor];
     
-    [self.view addSubview:hearderView];
+    [self.view addSubview:_hearderView];
     
-    UIImageView *hearderImageView = [[UIImageView alloc] initWithFrame:hearderView.bounds];
+    _hearderImageView = [[UIImageView alloc] initWithFrame:_hearderView.bounds];
     
-    hearderImageView.backgroundColor = [UIColor blueColor];
+    _hearderImageView.backgroundColor = [UIColor blueColor];
     
-    [hearderView addSubview:hearderImageView];
+    [_hearderView addSubview:_hearderImageView];
     
     NSURL *url = [NSURL URLWithString:@"http://www.who.int/entity/campaigns/immunization-week/2015/large-web-banner.jpg?ua=1"];
     //AFN设置图片
 //    [hearderImageView setImageWithURL:url];
     //YYWebImage 设置图片 网络指示器
-    [hearderImageView yy_setImageWithURL:url options:YYWebImageOptionShowNetworkActivity];
+    [_hearderImageView yy_setImageWithURL:url options:YYWebImageOptionShowNetworkActivity];
+    
     
 }
 
@@ -84,6 +88,19 @@ static NSString *cellID = @"cellID";
     tableView.scrollIndicatorInsets = tableView.contentInset;
     
 }
+#pragma mark: - UITableViewDelegate
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    CGFloat offset = scrollView.contentOffset.y + scrollView.contentInset.top;
+    
+    if (offset < 0) {
+        //放大
+        _hearderView.hm_y = 0;
+        _hearderView.hm_height = kHearderViewHeight - offset;
+        _hearderImageView.hm_height =  _hearderView.hm_height;
+    } else {
+        //整体上移
+    }
+}
 
 #pragma mark: - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -98,6 +115,5 @@ static NSString *cellID = @"cellID";
     
     return cell;
 }
-#pragma mark: - UITableViewDelegate
 
 @end
