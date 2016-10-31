@@ -68,6 +68,10 @@ static NSString *cellID = @"cellID";
     //YYWebImage 设置图片 网络指示器
     [_hearderImageView yy_setImageWithURL:url options:YYWebImageOptionShowNetworkActivity];
     
+    //填充模式 解决图片变形问题
+    _hearderImageView.contentMode = UIViewContentModeScaleAspectFill;
+    //设置图像裁切
+    _hearderImageView.clipsToBounds = YES;
     
 }
 
