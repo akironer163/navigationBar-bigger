@@ -7,6 +7,8 @@
 //
 
 #import "XNHeaderViewController.h"
+#import "HMObjcSugar.h"
+@import AFNetworking;
 
 static NSString *cellID = @"cellID";
 #define kHearderViewHeight 200

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B7EEBCA6D41D40E93D6CEFB /* Pods_____.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0A7E3ACE335D7A2B43C7287 /* Pods_____.framework */; };
 		CE0D9DF71DC6581F006A2A87 /* NSBundle+HMObjcSugar.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0D9DE21DC6581F006A2A87 /* NSBundle+HMObjcSugar.m */; };
 		CE0D9DF81DC6581F006A2A87 /* NSDate+HMObjcSugar.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0D9DE41DC6581F006A2A87 /* NSDate+HMObjcSugar.m */; };
 		CE0D9DF91DC6581F006A2A87 /* NSString+HMObjcSugar.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0D9DE61DC6581F006A2A87 /* NSString+HMObjcSugar.m */; };
@@ -29,6 +30,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8234F4124FC89315B18FDCCD /* Pods-顶部放大.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-顶部放大.release.xcconfig"; path = "Pods/Target Support Files/Pods-顶部放大/Pods-顶部放大.release.xcconfig"; sourceTree = "<group>"; };
+		9E378A3B882F9756B05AAF0C /* Pods-顶部放大.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-顶部放大.debug.xcconfig"; path = "Pods/Target Support Files/Pods-顶部放大/Pods-顶部放大.debug.xcconfig"; sourceTree = "<group>"; };
+		B0A7E3ACE335D7A2B43C7287 /* Pods_____.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "Pods_____.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE0D9DE01DC6581F006A2A87 /* HMObjcSugar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMObjcSugar.h; sourceTree = "<group>"; };
 		CE0D9DE11DC6581F006A2A87 /* NSBundle+HMObjcSugar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+HMObjcSugar.h"; sourceTree = "<group>"; };
 		CE0D9DE21DC6581F006A2A87 /* NSBundle+HMObjcSugar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+HMObjcSugar.m"; sourceTree = "<group>"; };
@@ -72,12 +76,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B7EEBCA6D41D40E93D6CEFB /* Pods_____.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1019EE95824FFB76B4AA66F5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9E378A3B882F9756B05AAF0C /* Pods-顶部放大.debug.xcconfig */,
+				8234F4124FC89315B18FDCCD /* Pods-顶部放大.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		2F4AB6950521B9806555BE55 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B0A7E3ACE335D7A2B43C7287 /* Pods_____.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		CE0D9DDF1DC6581F006A2A87 /* ObjcSugar */ = {
 			isa = PBXGroup;
 			children = (
@@ -113,6 +135,8 @@
 			children = (
 				CE6690921DC6262800E0499D /* 顶部放大 */,
 				CE6690911DC6262800E0499D /* Products */,
+				1019EE95824FFB76B4AA66F5 /* Pods */,
+				2F4AB6950521B9806555BE55 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -159,9 +183,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CE6690AA1DC6262800E0499D /* Build configuration list for PBXNativeTarget "顶部放大" */;
 			buildPhases = (
+				87F31CFC8CD3570E3C0624EB /* [CP] Check Pods Manifest.lock */,
 				CE66908C1DC6262800E0499D /* Sources */,
 				CE66908D1DC6262800E0499D /* Frameworks */,
 				CE66908E1DC6262800E0499D /* Resources */,
+				6CF17ED6D79E8E9E9CCFA4A9 /* [CP] Embed Pods Frameworks */,
+				D54A4BE42B9EC6A9F49E9DCE /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -218,6 +245,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6CF17ED6D79E8E9E9CCFA4A9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-顶部放大/Pods-顶部放大-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		87F31CFC8CD3570E3C0624EB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		D54A4BE42B9EC6A9F49E9DCE /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-顶部放大/Pods-顶部放大-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CE66908C1DC6262800E0499D /* Sources */ = {
@@ -357,6 +432,7 @@
 		};
 		CE6690AB1DC6262800E0499D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9E378A3B882F9756B05AAF0C /* Pods-顶部放大.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = EHLKZ43FUC;
@@ -369,6 +445,7 @@
 		};
 		CE6690AC1DC6262800E0499D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8234F4124FC89315B18FDCCD /* Pods-顶部放大.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = EHLKZ43FUC;
