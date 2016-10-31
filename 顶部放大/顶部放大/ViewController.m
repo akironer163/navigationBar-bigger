@@ -21,4 +21,9 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+}
 @end

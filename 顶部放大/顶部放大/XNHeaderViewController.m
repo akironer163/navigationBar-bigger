@@ -32,8 +32,7 @@ static NSString *cellID = @"cellID";
     //ViewController + NAV 会自动调整tableView的contentInset
     self.automaticallyAdjustsScrollViewInsets = NO;
     
-    [self.navigationController setNavigationBarHidden:YES]; //隐藏导航栏
-
+    [self.navigationController setNavigationBarHidden:YES animated:YES]; 
 }
 
 //顶部视图
@@ -44,6 +43,12 @@ static NSString *cellID = @"cellID";
     hearderView.backgroundColor = [UIColor redColor];
     
     [self.view addSubview:hearderView];
+    
+    UIImageView *hearderImageView = [[UIImageView alloc] initWithFrame:hearderView.bounds];
+    
+    hearderImageView.backgroundColor = [UIColor blueColor];
+    
+    [hearderView addSubview:hearderImageView];
 }
 
 - (void)prepareTableView {
