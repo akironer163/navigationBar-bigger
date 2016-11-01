@@ -23,15 +23,20 @@ static NSString *cellID = @"cellID";
     UIView *_headerView;
     UIImageView *_headerImageView;
     UIView *_lineView;
+    
+    UIStatusBarStyle _barStyle;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.view.backgroundColor = [UIColor whiteColor];
    
     [self prepareTableView];
     [self prepareheaderView];
     
-    self.view.backgroundColor = [UIColor orangeColor];
+    _barStyle = UIStatusBarStyleLightContent;
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -45,7 +50,7 @@ static NSString *cellID = @"cellID";
 
 //设置状态栏
 - (UIStatusBarStyle)preferredStatusBarStyle {
-    return UIStatusBarStyleLightContent;
+    return _barStyle;;
 }
 
 //顶部视图
@@ -120,7 +125,7 @@ static NSString *cellID = @"cellID";
         _headerImageView.alpha = 1 - progress;
         
         // 4. 状态栏亮度
-//        _barStyle = (_headerImageView.alpha < 0.5) ? UIStatusBarStyleDefault : UIStatusBarStyleLightContent;
+        _barStyle = (_headerImageView.alpha < 0.5) ? UIStatusBarStyleDefault : UIStatusBarStyleLightContent;
         [self.navigationController setNeedsStatusBarAppearanceUpdate];
     }
     
