@@ -22,6 +22,7 @@ static NSString *cellID = @"cellID";
 @implementation XNHeaderViewController {
     UIView *_headerView;
     UIImageView *_headerImageView;
+    UIView *_lineView;
 }
 
 - (void)viewDidLoad {
@@ -50,32 +51,37 @@ static NSString *cellID = @"cellID";
 //顶部视图
 - (void)prepareheaderView {
     
+    //顶部视图
     _headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, kHeaderHeight)];
-    
-    _headerView.backgroundColor = [UIColor redColor];
+    _headerView.backgroundColor = [UIColor hm_colorWithHex:0xf8f8f8];
     
     [self.view addSubview:_headerView];
     
+    //图像视图
     _headerImageView = [[UIImageView alloc] initWithFrame:_headerView.bounds];
-    
-    _headerImageView.backgroundColor = [UIColor blueColor];
+    _headerImageView.backgroundColor = [UIColor hm_colorWithHex:0x000033];
+    _headerImageView.contentMode = UIViewContentModeScaleAspectFill; //填充模式 解决图片变形问题
+    _headerImageView.clipsToBounds = YES; //设置图像裁切
     
     [_headerView addSubview:_headerImageView];
     
     NSURL *url = [NSURL URLWithString:@"http://www.who.int/entity/campaigns/immunization-week/2015/large-web-banner.jpg?ua=1"];
-    
     //AFN设置图片
-//    [headerImageView setImageWithURL:url];
+    //    [headerImageView setImageWithURL:url];
     //YYWebImage 设置图片 网络指示器
     [_headerImageView yy_setImageWithURL:url options:YYWebImageOptionShowNetworkActivity];
     
-    //填充模式 解决图片变形问题
-    _headerImageView.contentMode = UIViewContentModeScaleAspectFill;
-    //设置图像裁切
-    _headerImageView.clipsToBounds = YES;
+    //分割线
+    CGFloat lineHeight = 1 / [UIScreen hm_scale];
+    _lineView = [[UIView alloc] initWithFrame:CGRectMake(0, _headerView.hm_height - lineHeight, self.view.hm_width, lineHeight)];
+    _lineView.backgroundColor = [UIColor lightGrayColor];
+    [_headerView addSubview:_lineView];
+    
+    
     
 }
 
+//表格视图
 - (void)prepareTableView {
     UITableView *tableView = [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStylePlain];
     
@@ -94,27 +100,32 @@ static NSString *cellID = @"cellID";
 
 #pragma mark: - UITableViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    
     CGFloat offset = scrollView.contentOffset.y + scrollView.contentInset.top;
     
-    if (offset < 0) {
-        
-        //放大
+    if (offset <= 0) {
         _headerView.hm_y = 0;
-        _headerView.hm_height = kHeaderHeight - offset;
-        _headerImageView.hm_height =  _headerView.hm_height;
+        _headerView.hm_height = -scrollView.contentOffset.y;
+        _headerImageView.alpha = 1;
     } else {
-        
-        //整体上移
+        // 1. 固定高度
         _headerView.hm_height = kHeaderHeight;
-        _headerImageView.hm_height =  _headerView.hm_height;
         
-        CGFloat min = kHeaderHeight - 64; //headerVeiw最小y值
+        // 2. 移动顶部视图 - 固定预留出导航栏的位置
+        CGFloat min = kHeaderHeight - 64;
         _headerView.hm_y = -MIN(min, offset);
         
-//        NSLog(@"%f", offset / min); //offset / min == 1 隐藏_headerViewImage 
-        CGFloat progress = 1 - (offset / min);
-        _headerImageView.alpha = progress;
+        // 3. 透明度处理
+        CGFloat progress = offset / min;
+        _headerImageView.alpha = 1 - progress;
+        
+        // 4. 状态栏亮度
+//        _barStyle = (_headerImageView.alpha < 0.5) ? UIStatusBarStyleDefault : UIStatusBarStyleLightContent;
+        [self.navigationController setNeedsStatusBarAppearanceUpdate];
     }
+    
+    _headerImageView.hm_height = _headerView.hm_height;
+    _lineView.hm_y = _headerView.hm_height - _lineView.hm_height;
 }
 
 #pragma mark: - UITableViewDataSource
