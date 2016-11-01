@@ -9,7 +9,8 @@
 #import "XNHeaderViewController.h"
 #import "HMObjcSugar.h"
 #import "YYWebImage.h"
-@import AFNetworking;
+//@import AFNetworking;
+#import "DemoCell.h"
 
 
 static NSString *cellID = @"cellID";
@@ -93,7 +94,9 @@ static NSString *cellID = @"cellID";
     tableView.delegate = self;
     tableView.dataSource = self;
     
-    [tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:cellID];
+    [tableView registerClass:[DemoCell class] forCellReuseIdentifier:cellID];
+    
+    tableView.rowHeight = 100;
     
     [self.view addSubview:tableView];
     
@@ -143,6 +146,10 @@ static NSString *cellID = @"cellID";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID forIndexPath:indexPath];
     
     cell.textLabel.text = @(indexPath.row).stringValue;
+    
+    NSURL *url = [NSURL URLWithString:@"http://imglf0.ph.126.net/WAAJPGdYwngSJ5_0nq6YAA==/6608699301143989092.gif"];
+    UIImage *image = [UIImage imageNamed:@"22.jpg"];
+    [cell.imageView yy_setImageWithURL:url placeholder:image];
     
     return cell;
 }

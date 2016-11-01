@@ -19,11 +19,11 @@
 		CE0D9DFF1DC6581F006A2A87 /* UIScreen+HMObjcSugar.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0D9DF21DC6581F006A2A87 /* UIScreen+HMObjcSugar.m */; };
 		CE0D9E001DC6581F006A2A87 /* UITextField+HMObjcSugar.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0D9DF41DC6581F006A2A87 /* UITextField+HMObjcSugar.m */; };
 		CE0D9E011DC65820006A2A87 /* UIView+HMObjcSugar.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0D9DF61DC6581F006A2A87 /* UIView+HMObjcSugar.m */; };
+		CE5B7F821DC89541003EAC9A /* DemoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5B7F811DC89541003EAC9A /* DemoCell.m */; };
 		CE6690951DC6262800E0499D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6690941DC6262800E0499D /* main.m */; };
 		CE6690981DC6262800E0499D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6690971DC6262800E0499D /* AppDelegate.m */; };
 		CE66909B1DC6262800E0499D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE66909A1DC6262800E0499D /* ViewController.m */; };
 		CE66909E1DC6262800E0499D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE66909C1DC6262800E0499D /* Main.storyboard */; };
-		CE6690A11DC6262800E0499D /* ____.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CE66909F1DC6262800E0499D /* ____.xcdatamodeld */; };
 		CE6690A31DC6262800E0499D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE6690A21DC6262800E0499D /* Assets.xcassets */; };
 		CE6690A61DC6262800E0499D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE6690A41DC6262800E0499D /* LaunchScreen.storyboard */; };
 		CE6690AF1DC6270200E0499D /* XNHeaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6690AE1DC6270200E0499D /* XNHeaderViewController.m */; };
@@ -56,6 +56,8 @@
 		CE0D9DF41DC6581F006A2A87 /* UITextField+HMObjcSugar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+HMObjcSugar.m"; sourceTree = "<group>"; };
 		CE0D9DF51DC6581F006A2A87 /* UIView+HMObjcSugar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+HMObjcSugar.h"; sourceTree = "<group>"; };
 		CE0D9DF61DC6581F006A2A87 /* UIView+HMObjcSugar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+HMObjcSugar.m"; sourceTree = "<group>"; };
+		CE5B7F801DC89541003EAC9A /* DemoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoCell.h; sourceTree = "<group>"; };
+		CE5B7F811DC89541003EAC9A /* DemoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoCell.m; sourceTree = "<group>"; };
 		CE6690901DC6262800E0499D /* 顶部放大.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "顶部放大.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE6690941DC6262800E0499D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CE6690961DC6262800E0499D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -63,7 +65,6 @@
 		CE6690991DC6262800E0499D /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		CE66909A1DC6262800E0499D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		CE66909D1DC6262800E0499D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		CE6690A01DC6262800E0499D /* ____.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "____.xcdatamodel"; sourceTree = "<group>"; };
 		CE6690A21DC6262800E0499D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE6690A51DC6262800E0499D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE6690A71DC6262800E0499D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -159,10 +160,11 @@
 				CE6690AD1DC6270200E0499D /* XNHeaderViewController.h */,
 				CE6690AE1DC6270200E0499D /* XNHeaderViewController.m */,
 				CE66909C1DC6262800E0499D /* Main.storyboard */,
+				CE5B7F801DC89541003EAC9A /* DemoCell.h */,
+				CE5B7F811DC89541003EAC9A /* DemoCell.m */,
 				CE6690A21DC6262800E0499D /* Assets.xcassets */,
 				CE6690A41DC6262800E0499D /* LaunchScreen.storyboard */,
 				CE6690A71DC6262800E0499D /* Info.plist */,
-				CE66909F1DC6262800E0499D /* ____.xcdatamodeld */,
 				CE6690931DC6262800E0499D /* Supporting Files */,
 			);
 			path = "顶部放大";
@@ -309,8 +311,8 @@
 				CE0D9DF81DC6581F006A2A87 /* NSDate+HMObjcSugar.m in Sources */,
 				CE0D9E011DC65820006A2A87 /* UIView+HMObjcSugar.m in Sources */,
 				CE0D9DFB1DC6581F006A2A87 /* UIColor+HMObjcSugar.m in Sources */,
-				CE6690A11DC6262800E0499D /* ____.xcdatamodeld in Sources */,
 				CE0D9DFE1DC6581F006A2A87 /* UINavigationController+HMObjcSugar.m in Sources */,
+				CE5B7F821DC89541003EAC9A /* DemoCell.m in Sources */,
 				CE0D9DFA1DC6581F006A2A87 /* UIButton+HMObjcSugar.m in Sources */,
 				CE6690981DC6262800E0499D /* AppDelegate.m in Sources */,
 				CE0D9DFD1DC6581F006A2A87 /* UILabel+HMObjcSugar.m in Sources */,
@@ -437,8 +439,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = EHLKZ43FUC;
 				INFOPLIST_FILE = "顶部放大/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "cn.itheima.----";
+				PRODUCT_BUNDLE_IDENTIFIER = cn.itheima.xn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -450,8 +453,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = EHLKZ43FUC;
 				INFOPLIST_FILE = "顶部放大/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "cn.itheima.----";
+				PRODUCT_BUNDLE_IDENTIFIER = cn.itheima.xn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -478,19 +482,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		CE66909F1DC6262800E0499D /* ____.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				CE6690A01DC6262800E0499D /* ____.xcdatamodel */,
-			);
-			currentVersion = CE6690A01DC6262800E0499D /* ____.xcdatamodel */;
-			path = "____.xcdatamodeld";
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = CE6690881DC6262800E0499D /* Project object */;
 }
